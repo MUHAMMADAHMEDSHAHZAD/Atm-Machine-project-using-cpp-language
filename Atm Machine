@@ -1,0 +1,63 @@
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+using namespace std;
+
+const int MAX = 1000;
+
+int main()
+{
+    int balance = 5000;
+    int withdrawal;
+    int deposit;
+    int choice;
+    int pin = 1234;
+
+    cout << "Enter your pin: ";
+    cin >> pin;
+
+    if (pin != 1234)
+    {
+        cout << "Incorrect pin" << endl;
+        return 0;
+    }
+
+    while (true)
+    {
+        cout << "1. Check balance" << endl;
+        cout << "2. Withdrawal" << endl;
+        cout << "3. Deposit" << endl;
+        cout << "4. Quit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            cout << "Your balance is: " << balance << endl;
+            break;
+        case 2:
+            cout << "Enter the amount to be withdrawn: ";
+            cin >> withdrawal;
+            if (withdrawal > balance)
+                cout << "Insufficient balance" << endl;
+            else
+                balance = balance - withdrawal;
+            cout << "Your balance is: " << balance << endl;
+            break;
+        case 3:
+            cout << "Enter the amount to be deposited: ";
+            cin >> deposit;
+            balance = balance + deposit;
+            cout << "Your balance is: " << balance << endl;
+            break;
+        case 4:
+            cout << "Thank you for using ATM" << endl;
+            return 0;
+        default:
+            cout << "Invalid option" << endl;
+        }
+    }
+
+    return 0;
+}
